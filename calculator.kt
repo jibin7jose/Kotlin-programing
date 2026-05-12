@@ -8,20 +8,27 @@
 // kotlinc calculator.kt -include-runtime -d calculator.jar
 // java -jar calculator.jar
 
+// Example Input:
+// 10
+// 5
+// *
+
 // Example Output:
-// Enter first number: 10
-// Enter second number: 5
-// Choose operation (+, -, *, /): *
 // Result: 50.0
 // -----------------------------------------
 
 fun main() {
 
     print("Enter first number: ")
-    val num1 = readLine()!!.toDouble()
+    val num1 = readLine()?.toDoubleOrNull()
 
     print("Enter second number: ")
-    val num2 = readLine()!!.toDouble()
+    val num2 = readLine()?.toDoubleOrNull()
+
+    if (num1 == null || num2 == null) {
+        println("Invalid number input")
+        return
+    }
 
     print("Choose operation (+, -, *, /): ")
     val op = readLine()
